@@ -22,6 +22,7 @@ import org.mutabilitydetector.jsr353.jsonreaders.model.GoogleGsonExtractor;
 import org.mutabilitydetector.jsr353.jsonreaders.model.JacksonTreeModelExtractor;
 import org.mutabilitydetector.jsr353.jsonreaders.model.OrgJsonExtractor;
 import org.mutabilitydetector.jsr353.jsonreaders.streaming.JacksonStreamingExtractor;
+import org.mutabilitydetector.jsr353.jsonreaders.streaming.JsonSimpleStreamingExtractor;
 
 @RunWith(Theories.class)
 public class JsonReadersTest {
@@ -32,10 +33,11 @@ public class JsonReadersTest {
     
     @DataPoints public static final TrendingTopicsJsonExtractor[] extractors = new TrendingTopicsJsonExtractor[] { 
         new OrgJsonExtractor(topicCategoryService),
-        new JacksonStreamingExtractor(topicCategoryService),
         new JacksonTreeModelExtractor(topicCategoryService),
-        new GoogleGsonExtractor(topicCategoryService)
-        //new Jsr353Extractor(topicCategoryService) -- no implementation available
+        new GoogleGsonExtractor(topicCategoryService),
+        new JacksonStreamingExtractor(topicCategoryService),
+        new JsonSimpleStreamingExtractor(topicCategoryService)
+        //new Jsr353StreamingExtractor(topicCategoryService) -- no implementation available
         
     };
 
