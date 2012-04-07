@@ -39,27 +39,24 @@ public final class GoogleGsonExtractor implements TrendingTopicsJsonExtractor {
     
     private Iterable<TrendingTopic> extractTrendsFrom(JsonStreamParser gsonStreamParser) {
         List<TrendingTopic> trendingTopics = new ArrayList<TrendingTopic>();
-        JsonElement rootElement = gsonStreamParser.next();
         
-        if (rootElement.isJsonObject()) {
-            JsonObject rootObject = rootElement.getAsJsonObject();
+        JsonObject rootObject = gsonStreamParser.next().getAsJsonObject();
+        
+        JsonObject trends = rootObject.get("trends").getAsJsonObject();
+        
+        for (Entry<String, JsonElement> hourOfTrends : trends.entrySet()) {
+            DateTime hour = parseDateTime(hourOfTrends.getKey());
+            int position = 1;
             
-            JsonObject trends = rootObject.get("trends").getAsJsonObject();
+            JsonArray trendsInHour = hourOfTrends.getValue().getAsJsonArray();
             
-            for (Entry<String, JsonElement> hourOfTrends : trends.entrySet()) {
-                DateTime hour = parseDateTime(hourOfTrends.getKey());
-                int position = 1;
+            for (JsonElement jsonElement : trendsInHour) {
+                String topicName = stripHash(jsonElement.getAsJsonObject().get("name").getAsString());
                 
-                JsonArray trendsInHour = hourOfTrends.getValue().getAsJsonArray();
+                Category category = topicCategoryservice.categoryFor(topicName);
                 
-                for (JsonElement jsonElement : trendsInHour) {
-                    String topicName = stripHash(jsonElement.getAsJsonObject().get("name").getAsString());
-                    
-                    Category category = topicCategoryservice.categoryFor(topicName);
-                    
-                    trendingTopics.add(new TrendingTopic(hour, position, topicName, category));
-                    position++;
-                }
+                trendingTopics.add(new TrendingTopic(hour, position, topicName, category));
+                position++;
             }
         }
         
