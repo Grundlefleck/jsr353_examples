@@ -18,6 +18,10 @@ import org.mutabilitydetector.jsr353.Category;
 import org.mutabilitydetector.jsr353.TopicCategoryService;
 import org.mutabilitydetector.jsr353.TrendingTopic;
 import org.mutabilitydetector.jsr353.TrendingTopicsJsonExtractor;
+import org.mutabilitydetector.jsr353.jsonreaders.model.GoogleGsonExtractor;
+import org.mutabilitydetector.jsr353.jsonreaders.model.JacksonTreeModelExtractor;
+import org.mutabilitydetector.jsr353.jsonreaders.model.OrgJsonExtractor;
+import org.mutabilitydetector.jsr353.jsonreaders.streaming.JacksonStreamingExtractor;
 
 @RunWith(Theories.class)
 public class JsonReadersTest {

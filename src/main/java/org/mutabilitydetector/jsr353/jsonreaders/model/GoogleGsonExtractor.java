@@ -1,4 +1,4 @@
-package org.mutabilitydetector.jsr353.jsonreaders;
+package org.mutabilitydetector.jsr353.jsonreaders.model;
 
 import static org.mutabilitydetector.jsr353.HashStripper.stripHash;
 import static org.mutabilitydetector.jsr353.IsoDateHourMinuteFormatter.parseDateTime;
