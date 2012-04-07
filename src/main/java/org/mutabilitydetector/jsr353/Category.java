@@ -1,6 +1,6 @@
 package org.mutabilitydetector.jsr353;
 
-public class Category {
+public final class Category {
     public final String name;
 
     public Category(String name) {
