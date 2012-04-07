@@ -30,7 +30,9 @@ public class JsonReadersTest {
         new OrgJsonExtractor(topicCategoryService),
         new JacksonStreamingExtractor(topicCategoryService),
         new JacksonTreeModelExtractor(topicCategoryService),
+        new GoogleGsonExtractor(topicCategoryService)
         //new Jsr353Extractor(topicCategoryService) -- no implementation available
+        
     };
 
     @Theory
