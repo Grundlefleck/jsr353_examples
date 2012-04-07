@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.joda.time.DateTime;
@@ -36,9 +37,8 @@ public final class GoogleGsonExtractor implements TrendingTopicsJsonExtractor {
         return extractTrendsFrom(gsonStreamParser);
     }
     
-    
     private Iterable<TrendingTopic> extractTrendsFrom(JsonStreamParser gsonStreamParser) {
-        ArrayList<TrendingTopic> trendingTopics = new ArrayList<TrendingTopic>();
+        List<TrendingTopic> trendingTopics = new ArrayList<TrendingTopic>();
         JsonElement rootElement = gsonStreamParser.next();
         
         if (rootElement.isJsonObject()) {
@@ -65,10 +65,4 @@ public final class GoogleGsonExtractor implements TrendingTopicsJsonExtractor {
         
         return Collections.unmodifiableList(trendingTopics);
     }
-
-
-    public static class Trends {
-        
-    }
-
 }
