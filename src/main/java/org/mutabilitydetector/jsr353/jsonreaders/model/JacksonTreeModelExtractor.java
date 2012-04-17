@@ -42,7 +42,7 @@ public final class JacksonTreeModelExtractor implements TrendingTopicsJsonExtrac
     }
 
     private Iterable<TrendingTopic> extractTrendsFrom(JsonParser parser) throws IOException {
-        List<TrendingTopic> trendingTopics = new ArrayList<TrendingTopic>();
+        List<TrendingTopic> trendingTopics = new ArrayList<>();
         
         JsonNode trends = parser.readValueAsTree().path("trends");
         Iterator<Entry<String, JsonNode>> trendsByHour = trends.getFields();

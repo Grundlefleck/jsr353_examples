@@ -36,7 +36,7 @@ public final class Jsr353StreamingExtractor implements TrendingTopicsJsonExtract
     }
 
     private Iterable<TrendingTopic> extractTrendsFrom(JsonPullReader pullReader) {
-        List<TrendingTopic> trendingTopics = new ArrayList<TrendingTopic>();
+        List<TrendingTopic> trendingTopics = new ArrayList<>();
         Iterator<Event> iterator = pullReader.iterator();
         
         while (iterator.next() != Event.END_OBJECT) {

@@ -2,7 +2,7 @@ package org.mutabilitydetector.jsr353;
 
 import org.joda.time.DateTime;
 
-public class TrendingTopic {
+public final class TrendingTopic {
     public final DateTime trendingDate;
     public final int position;
     public final String topic;

@@ -39,7 +39,7 @@ public final class JacksonStreamingExtractor implements TrendingTopicsJsonExtrac
     }
 
     private Iterable<TrendingTopic> extractTrendsFrom(JsonParser parser) throws JsonParseException, IOException {
-        List<TrendingTopic> trendingTopics = new ArrayList<TrendingTopic>();
+        List<TrendingTopic> trendingTopics = new ArrayList<>();
         
         parser.nextToken();
         

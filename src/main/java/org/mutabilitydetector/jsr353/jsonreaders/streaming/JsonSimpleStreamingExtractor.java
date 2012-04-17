@@ -46,7 +46,7 @@ public class JsonSimpleStreamingExtractor implements TrendingTopicsJsonExtractor
     private static class TrendsContentHandler implements ContentHandler {
 
         private final TopicCategoryService topicCategoryService;
-        private final List<TrendingTopic> trendingTopics = new ArrayList<TrendingTopic>(); 
+        private final List<TrendingTopic> trendingTopics = new ArrayList<>(); 
         
         
         private boolean continueParsing = true;

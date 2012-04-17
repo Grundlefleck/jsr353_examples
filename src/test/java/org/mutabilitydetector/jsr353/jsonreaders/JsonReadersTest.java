@@ -18,9 +18,9 @@ import org.mutabilitydetector.jsr353.Category;
 import org.mutabilitydetector.jsr353.TopicCategoryService;
 import org.mutabilitydetector.jsr353.TrendingTopic;
 import org.mutabilitydetector.jsr353.TrendingTopicsJsonExtractor;
-import org.mutabilitydetector.jsr353.jsonreaders.model.GoogleGsonExtractor;
+import org.mutabilitydetector.jsr353.jsonreaders.model.GoogleGsonTreeModelExtractor;
 import org.mutabilitydetector.jsr353.jsonreaders.model.JacksonTreeModelExtractor;
-import org.mutabilitydetector.jsr353.jsonreaders.model.OrgJsonExtractor;
+import org.mutabilitydetector.jsr353.jsonreaders.model.OrgJsonTreeModelExtractor;
 import org.mutabilitydetector.jsr353.jsonreaders.streaming.JacksonStreamingExtractor;
 import org.mutabilitydetector.jsr353.jsonreaders.streaming.JsonSimpleStreamingExtractor;
 
@@ -32,9 +32,9 @@ public class JsonReadersTest {
     private static final TopicCategoryService topicCategoryService = mock(TopicCategoryService.class);
     
     @DataPoints public static final TrendingTopicsJsonExtractor[] extractors = new TrendingTopicsJsonExtractor[] { 
-        new OrgJsonExtractor(topicCategoryService),
+        new OrgJsonTreeModelExtractor(topicCategoryService),
         new JacksonTreeModelExtractor(topicCategoryService),
-        new GoogleGsonExtractor(topicCategoryService),
+        new GoogleGsonTreeModelExtractor(topicCategoryService),
         new JacksonStreamingExtractor(topicCategoryService),
         new JsonSimpleStreamingExtractor(topicCategoryService),
         //new Jsr353StreamingExtractor(topicCategoryService) -- no implementation available
