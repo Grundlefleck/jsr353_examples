@@ -11,8 +11,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.json.stream.JsonPullReader;
-import javax.json.stream.JsonPullReader.Event;
+import javax.json.stream.JsonParser;
+import javax.json.stream.JsonParser.Event;
+
 
 import org.joda.time.DateTime;
 import org.mutabilitydetector.jsr353.Category;
@@ -30,12 +31,12 @@ public final class Jsr353StreamingExtractor implements TrendingTopicsJsonExtract
 
     @Override
     public Iterable<TrendingTopic> trendingTopicsFrom(InputStream jsonInput) throws IOException {
-        JsonPullReader pullReader = JsonPullReader.create(new InputStreamReader(jsonInput));
+        JsonParser pullReader = new JsonParser(new InputStreamReader(jsonInput));
 
         return extractTrendsFrom(pullReader);
     }
 
-    private Iterable<TrendingTopic> extractTrendsFrom(JsonPullReader pullReader) {
+    private Iterable<TrendingTopic> extractTrendsFrom(JsonParser pullReader) {
         List<TrendingTopic> trendingTopics = new ArrayList<>();
         Iterator<Event> iterator = pullReader.iterator();
         
